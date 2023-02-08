@@ -101,7 +101,7 @@ async function authorize(options) {
   const postOptions = {
     method: 'POST',
     body: form,
-    headers: form.getHeaders()
+    headers: form.getHeaders ? form.getHeaders() : { 'Content-Type': 'multipart/form-data' }
   };
 
   return fetch(`${ims}/ims/exchange/jwt/`, postOptions)
